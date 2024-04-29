@@ -1,8 +1,5 @@
+const Button = (props) => {
+  return <button {...props} className={props.className || "btn border"} />;
+};
 
-const Button = () => {
-  return (
-    <button>Button</button>
-  )
-}
-
-export default Button
+export default Button;
