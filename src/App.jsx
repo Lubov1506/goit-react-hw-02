@@ -3,6 +3,7 @@ import Description from "./components/Description/Description";
 import FeedbackList from "./components/FeedbackList/FeedbackList";
 import OptionsList from "./components/OptionsList/OptionsList";
 import Notification from "./components/Notification/Notification";
+import Container from "./components/Container/Container";
 
 function App() {
   const [feedback, setFeedback] = useState({
@@ -24,21 +25,23 @@ function App() {
   };
   return (
     <>
-      <Description />
-      <OptionsList
-        setFeedback={updateFeedback}
-        totalFeedback={totalFeedback}
-        onReset={handleReset}
-      />
-      {totalFeedback > 0 ? (
-        <FeedbackList
-          {...feedback}
-          total={totalFeedback}
-          positive={positiveFeedback}
+      <Container>
+        <Description />
+        <OptionsList
+          setFeedback={updateFeedback}
+          totalFeedback={totalFeedback}
+          onReset={handleReset}
         />
-      ) : (
-        <Notification />
-      )}
+        {totalFeedback > 0 ? (
+          <FeedbackList
+            total={totalFeedback}
+            positive={positiveFeedback}
+            feedback={feedback}
+          />
+        ) : (
+          <Notification />
+        )}
+      </Container>
     </>
   );
 }
